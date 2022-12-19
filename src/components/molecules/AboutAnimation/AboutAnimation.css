@@ -1,0 +1,19 @@
+.animation-box {
+	color: #fff;
+	font-weight: 400;
+	font-size: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: "Khula", sans-serif;
+	box-sizing: border-box;
+	letter-spacing: 6px;
+	margin: 0;
+	line-height: 1.2;
+}
+
+span {
+	display: inline-block;
+}

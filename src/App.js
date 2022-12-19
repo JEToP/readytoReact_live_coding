@@ -2,6 +2,9 @@ import Hero from "./components/organisms/Hero";
 import Skills from "./components/organisms/Skills";
 import Navigation from "./components/atoms/Navigation";
 import Navbar from "./components/organisms/Navbar";
+import Projects from "./components/organisms/Projects";
+import About from "./components/organisms/About";
+import Footer from "./components/organisms/Footer";
 
 function App() {
 	const subtitle =
@@ -20,6 +23,12 @@ function App() {
 	const sections = ["home", "skills", "progetti", "about", "contatti"];
 
 	const name = "Elias";
+	const surname = "Surname";
+
+	const firstParagraph =
+		"I’m a self-taught front-end developer based in Kyiv, Ukraine. I candevelop responsive websites from scratch and raise them into moder user-friendly web experiences.";
+	const secondParagraph =
+		"Transforming my creativity and knowledge into a websites has been my passion for over a year. I have been helping various clients to establish their presence online. I always strive to learn about the newest technologies and frameworks.";
 
 	return (
 		<div className="w-full">
@@ -42,7 +51,26 @@ function App() {
 						tools={toolsSkills}
 					/>
 				</div>
+				<div id="progetti" className="py-24">
+					<Projects />
+				</div>
+
+				<div id="about" className="py-24">
+					<About
+						name={name}
+						surname={surname}
+						firstParagraph={firstParagraph}
+						secondParagraph={secondParagraph}
+					/>
+				</div>
 			</div>
+			<Footer
+				mail={mail}
+				github={GitLink}
+				linkedin={LinkedinLink}
+				figma={FigmaLink}
+				name={name}
+			/>
 		</div>
 	);
 }
