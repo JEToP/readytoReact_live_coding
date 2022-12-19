@@ -1,4 +1,5 @@
 import Heading from "../atoms/Heading";
+import Form from "../molecules/Form.jsx";
 import rocket from "../../assets/img/rocket.png";
 
 export default function Contacts(props) {
@@ -17,6 +18,7 @@ export default function Contacts(props) {
 						large projects. However, if you have other request or question,
 						don’t hesitate to use the form.
 					</p>
+					<Form mail={props.mail} />
 				</div>
 			</div>
 		</div>
