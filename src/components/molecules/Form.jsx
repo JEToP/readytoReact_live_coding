@@ -1,7 +1,19 @@
 import React from "react";
+import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 
 export default function TextInput(props) {
+	const schema = yup.object().shape({
+		email: yup
+			.string()
+			.email("Formato email non valido")
+			.required("Campo richiesto"),
+		name: yup.string().required("Campo richiesto"),
+		object: yup.string().required("Campo richiesto"),
+		text: yup.string().required("Campo richiesto"),
+	});
+
 	const initialValues = {
 		name: "",
 		email: "",
@@ -10,7 +22,11 @@ export default function TextInput(props) {
 	};
 
 	return (
-		<Formik initialValues={initialValues} onSubmit={""}>
+		<Formik
+			initialValues={initialValues}
+			validationSchema={schema}
+			onSubmit={""}
+		>
 			<Form>
 				<div className="pl-10">
 					<div className="grid w-full grid-cols-2 gap-8 mb-7">
@@ -21,6 +37,18 @@ export default function TextInput(props) {
 								name="name"
 								placeholder="Nome"
 							/>
+							<ErrorMessage
+								name="name"
+								render={(msg) => (
+									<div className="flex flex-row items-center text-red-600 font-poppins">
+										{msg}
+										<ExclamationCircleIcon
+											className="w-5 h-5 ml-1 text-red-500"
+											aria-hidden="true"
+										/>
+									</div>
+								)}
+							/>
 						</div>
 						<div>
 							<Field
@@ -28,6 +56,18 @@ export default function TextInput(props) {
 								id="email"
 								name="email"
 								placeholder="Email"
+							/>
+							<ErrorMessage
+								name="email"
+								render={(msg) => (
+									<div className="flex flex-row items-center text-red-600 font-poppins">
+										{msg}
+										<ExclamationCircleIcon
+											className="w-5 h-5 ml-1 text-red-500"
+											aria-hidden="true"
+										/>
+									</div>
+								)}
 							/>
 						</div>
 					</div>
@@ -37,12 +77,36 @@ export default function TextInput(props) {
 						name="object"
 						placeholder="Oggetto"
 					/>
+					<ErrorMessage
+						name="object"
+						render={(msg) => (
+							<div className="flex flex-row items-center text-red-600 font-poppins">
+								{msg}
+								<ExclamationCircleIcon
+									className="w-5 h-5 ml-1 text-red-500"
+									aria-hidden="true"
+								/>
+							</div>
+						)}
+					/>
 					<Field
 						className="w-full p-2 text-white bg-transparent border-2 rounded-lg h-52 placeholder-gray mt-7 border-green font-fira focus:outline-none focus:ring-green focus:border-green"
 						id="text"
 						name="text"
 						placeholder="Testo"
 						as="textarea"
+					/>
+					<ErrorMessage
+						name="text"
+						render={(msg) => (
+							<div className="flex flex-row items-center text-red-600 font-poppins">
+								{msg}
+								<ExclamationCircleIcon
+									className="w-5 h-5 ml-1"
+									aria-hidden="true"
+								/>
+							</div>
+						)}
 					/>
 					<div className="absolute mt-8">
 						<button
