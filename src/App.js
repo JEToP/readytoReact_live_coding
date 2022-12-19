@@ -5,6 +5,7 @@ import Navbar from "./components/organisms/Navbar";
 import Projects from "./components/organisms/Projects";
 import About from "./components/organisms/About";
 import Footer from "./components/organisms/Footer";
+import Contacts from "./components/organisms/Contacts";
 
 function App() {
 	const subtitle =
@@ -62,6 +63,9 @@ function App() {
 						firstParagraph={firstParagraph}
 						secondParagraph={secondParagraph}
 					/>
+				</div>
+				<div id="contatti" className="py-24">
+					<Contacts mail={mail} />
 				</div>
 			</div>
 			<Footer
