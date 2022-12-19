@@ -1,7 +1,9 @@
 import React from "react";
+import Banner from "../atoms/Banner";
 import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { sendMail } from "../sdconfig";
 
 export default function TextInput(props) {
 	const schema = yup.object().shape({
@@ -21,11 +23,22 @@ export default function TextInput(props) {
 		text: "",
 	};
 
+	const onSubmitHandler = (data, { resetForm }) => {
+		sendMail(props.mail, data.email, data.name, data.object, data.text);
+
+		const banner = document.getElementById("form-banner");
+		banner.className = "block mt-24";
+		resetForm();
+		setTimeout(() => {
+			banner.className = "hidden mt-24";
+		}, 3000);
+	};
+
 	return (
 		<Formik
 			initialValues={initialValues}
 			validationSchema={schema}
-			onSubmit={""}
+			onSubmit={onSubmitHandler}
 		>
 			<Form>
 				<div className="pl-10">
@@ -119,6 +132,7 @@ export default function TextInput(props) {
 							Invio -&gt;{" "}
 						</div>
 					</div>
+					<Banner id="form-banner" />
 				</div>
 			</Form>
 		</Formik>
